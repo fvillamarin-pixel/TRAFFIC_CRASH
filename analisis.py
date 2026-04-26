@@ -19,8 +19,9 @@ def buscar(datos, termino):
         if termino.lower() in texto.lower():
             resultados.append(fila)
     
-    print("\nSe encontraron", len(resultados), "registros\n")
-    
+    print("Se encontraron", len(resultados), "registros")
+    print("============================")
+
     for r in resultados:
         print(r)
 
@@ -43,11 +44,11 @@ def estadisticas(datos):
         suma += v
     
     promedio = suma / len(valores)
-    
-    print("\nMáximo:", maximo)
-    print("Mínimo:", minimo)
-    print("Promedio:", promedio)
 
+    print("Datos de edad de los vehiculos")
+    print("Máximo:", maximo, "Años")
+    print("Mínimo:", minimo, "Años")
+    print("Promedio:", promedio, "Años")
 
 def agrupar_por_tipo(datos):
     conteo = {}
@@ -59,6 +60,6 @@ def agrupar_por_tipo(datos):
             conteo[tipo] += 1
         else:
             conteo[tipo] = 1
-    
+    print("Tipo de vehiculo:")
     for tipo, cantidad in conteo.items():
         print(tipo, ":", cantidad)

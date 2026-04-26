@@ -4,12 +4,14 @@ from analisis import cargar_datos, buscar, estadisticas, agrupar_por_tipo
 def menu():
     datos = cargar_datos("TRAFFIC_CRASHpequeño.csv")
     while True:
-        print("\n====== MENÚ DATA LAB ======")
+        print("====== MENÚ DATA LAB ======")
         print("1. Buscar registros")
         print("2. Estadísticas")
         print("3. Agrupar por tipo")
         print("4. Salir")
+        print("============================")
         opcion = input("Seleccione una opción: ")
+        print("============================")
         if opcion == "1":
             termino = input("Ingrese término: ")
             buscar(datos, termino)
@@ -20,7 +22,7 @@ def menu():
         elif opcion == "4":
             break
         else:
-            print("Opción inválida")
+            print("Opción inválida", "\nDigite un opcion valida")
 
 
 menu()
