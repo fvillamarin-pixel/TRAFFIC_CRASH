@@ -31,7 +31,8 @@ Paso 3: Usa el menú interactivo para seleccionar las opciones disponibles
 
 Integrantes:
 -Fredy Alejandro Villamarin Garcia
-
+-Juan Manuel Villabon Nuñez
+-Laura Balcazar
 Link del poster 
 https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive_link
 
