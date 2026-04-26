@@ -33,7 +33,7 @@ Integrantes:
 -Fredy Alejandro Villamarin Garcia
 
 Link del poster 
-https://drive.google.com/file/d/1WUiDW0UIoVjk7V_cflYXNIsHXVJt_QhU/view?usp=drive_link
+https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive_link
 
 Link del repositorio 
 https://github.com/fvillamarin-pixel/TRAFFIC_CRASH
