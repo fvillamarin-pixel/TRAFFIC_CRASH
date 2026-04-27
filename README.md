@@ -11,7 +11,7 @@ El dataset corresponde a registros de accidentes de tránsito y contiene 5 colum
 - Tipo de vehículo
 - Edad del vehículo
 - Fecha del accidente
-- Gravedad del accidente
+- Gravedad del accidente<br>
 Filas = 31928
 
 La carpeta contiene 2 archivos.CSV <br>
