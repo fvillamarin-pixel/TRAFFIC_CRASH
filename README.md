@@ -29,11 +29,10 @@ Paso 1: Abre la terminal en la carpeta del proyecto (Hecho en Vs code)
 Paso 2: Usa el comando "python main.py"
 Paso 3: Usa el menú interactivo para seleccionar las opciones disponibles 
 
-Integrantes:
--Fredy Alejandro Villamarin Garcia
--Juan Manuel Villabon Nuñez
--Laura Balcazar
-
+Integrantes:<br>
+-Fredy Alejandro Villamarin Garcia<br>
+-Juan Manuel Villabon Nuñez<br>
+-Laura Sofia Muneton Balcazar<br>
 Link del poster 
 https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive_link
 
