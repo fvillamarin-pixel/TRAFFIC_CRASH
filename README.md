@@ -45,3 +45,8 @@ https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive
 **Link del repositorio:**
 <br>
 https://github.com/fvillamarin-pixel/TRAFFIC_CRASH
+
+**Link del video:**
+<br> 
+https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=sharing
+
