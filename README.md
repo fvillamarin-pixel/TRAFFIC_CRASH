@@ -2,16 +2,16 @@
 TRAFFIC_CRASH<br>
 dataset - Vehículos involucrados en accidentes de tránsito en Bogotá (2022 – 2025)<br>
 DataLab – Análisis de Accidentes de Tránsito<br>
-Que es?:<br>
+¿Qué es?:<br>
 Este proyecto consiste en el desarrollo de una herramienta en Python que permite analizar un dataset de accidentes de tránsito mediante un programa en consola y posteriormente en una GUI y una interfaz en PyQt5
 El sistema permite explorar los datos, realizar búsquedas, calcular estadísticas y agrupar información para responder preguntas relevantes sobre los accidentes.
 El dataset corresponde a registros de accidentes de tránsito y contiene 5 columnas.
-Marca del vehículo
-Modelo del vehículo
-Tipo de vehículo
-Edad del vehículo
-Fecha del accidente
-Gravedad del accidente
+- Marca del vehículo
+- Modelo del vehículo
+- Tipo de vehículo
+- Edad del vehículo
+- Fecha del accidente
+- Gravedad del accidente
 Filas = 31928
 
 La carpeta contiene 2 archivos.CSV <br>
@@ -29,9 +29,9 @@ Paso 2: Usa el comando "python main.py"<br>
 Paso 3: Usa el menú interactivo para seleccionar las opciones disponibles <br>
 
 Integrantes:<br>
--Fredy Alejandro Villamarin Garcia<br>
--Juan Manuel Villabon Nuñez<br>
--Laura Sofia Muneton Balcazar<br>
+- Fredy Alejandro Villamarin Garcia<br>
+- Juan Manuel Villabon Nuñez<br>
+- Laura Sofia Muneton Balcazar<br>
 Link del poster 
 <br>
 https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive_link
