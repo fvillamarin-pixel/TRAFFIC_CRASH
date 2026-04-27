@@ -12,6 +12,7 @@ El dataset corresponde a registros de accidentes de tránsito y contiene 5 colum
 - Edad del vehículo
 - Fecha del accidente
 - Gravedad del accidente<br>
+
 Filas = 31928
 
 La carpeta contiene 2 archivos.CSV <br>
@@ -32,6 +33,8 @@ Integrantes:<br>
 - Fredy Alejandro Villamarin Garcia<br>
 - Juan Manuel Villabon Nuñez<br>
 - Laura Sofia Muneton Balcazar<br>
+
+
 Link del poster 
 <br>
 https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive_link
