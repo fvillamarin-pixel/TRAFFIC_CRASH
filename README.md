@@ -33,7 +33,9 @@ Integrantes:<br>
 -Juan Manuel Villabon Nuñez<br>
 -Laura Sofia Muneton Balcazar<br>
 Link del poster 
+<br>
 https://drive.google.com/file/d/1zxuWMYdwVt48T6puj5FzfW4ANXxJNdZZ/view?usp=drive_link
 
 Link del repositorio 
+<br>
 https://github.com/fvillamarin-pixel/TRAFFIC_CRASH
