@@ -61,5 +61,9 @@ https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=shari
 - Recuperar archivos guardados.
 - Historial automático de consultas.
 - Comparación de grupos.
+
+ **Link del diagrama de flujo de datos**
+ <br>
+ https://drive.google.com/file/d/1R1Dmptn2mx06i8fguutc84CWCkfwKH5u/view?usp=drive_link
  
- |  
+ **Link del video** 
