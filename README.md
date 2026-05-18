@@ -50,3 +50,22 @@ https://github.com/fvillamarin-pixel/TRAFFIC_CRASH
 <br> 
 https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=sharing
 
+## ENTREGA 2
+
+**Funcionalidades Entrega 2** 
+<br>
+- Búsqueda de registros.
+- Estadísticas básicas.
+- Agrupación por tipo de vehículo.
+- Guardar resultados en CSV y JSON.
+- Recuperar archivos guardados.
+- Historial automático de consultas.
+- Comparación de grupos.
+
+ **Link del diagrama de flujo de datos**
+ <br>
+ https://drive.google.com/file/d/1R1Dmptn2mx06i8fguutc84CWCkfwKH5u/view?usp=drive_link
+ 
+ **Link del video** 
+ <br>
+ https://drive.google.com/file/d/1o6FUwplxAXTsrM3mUYsqhX546BYp0jGg/view?usp=drive_link
