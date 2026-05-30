@@ -124,11 +124,3 @@ pip install pandas matplotlib pyqt5
 python main.py
 ```
 
-
- **Link del diagrama de flujo de datos:**
- <br>
- https://drive.google.com/file/d/1R1Dmptn2mx06i8fguutc84CWCkfwKH5u/view?usp=drive_link
- 
- **Link del video:** 
- <br>
- https://drive.google.com/file/d/1o6FUwplxAXTsrM3mUYsqhX546BYp0jGg/view?usp=drive_link
