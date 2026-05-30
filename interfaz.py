@@ -11,13 +11,13 @@ from PyQt5.QtWidgets import (
     QLabel
 )
 from PyQt5.QtCore import Qt
-from analisis import (
-    buscar,
-    estadisticas
+import matplotlib.pyplot as plt
+from analisis import agrupar_por_tipo
+
+from archivos import (
+    mostrar_historial,
+    guardar_resultado
 )
-
-from archivos import mostrar_historial
-
 
 class Ventana(QWidget):
 
@@ -85,7 +85,54 @@ class Ventana(QWidget):
         )
         layout.addWidget(boton_historial)
 
+        boton_agrupar = QPushButton(
+            "Agrupar por Tipo"
+        )
+
+        boton_agrupar.clicked.connect(
+            self.mostrar_grupos
+        )
+
+        layout.addWidget(boton_agrupar)
+
+        boton_grafico1 = QPushButton(
+            "Gráfico por Tipo de Vehículo"
+        )
+
+        boton_grafico1.clicked.connect(
+            self.grafico_tipo
+        )
+
+        layout.addWidget(boton_grafico1)
+
+        boton_grafico2 = QPushButton(
+            "Gráfico Edad de Vehículos"
+        )
+
+        boton_grafico2.clicked.connect(
+            self.grafico_edad
+        )
+
+        layout.addWidget(boton_grafico2)
+
+        boton_exportar = QPushButton(
+            "Exportar CSV"
+        )
+
+        boton_exportar.clicked.connect(
+            self.exportar_csv
+        )
+
+        layout.addWidget(boton_exportar)
+
+        boton_salir = QPushButton("Salir")
+
+        boton_salir.clicked.connect(self.close)
+
+        layout.addWidget(boton_salir)
+
         self.resultados = QTextEdit()
+
         layout.addWidget(self.resultados)
 
         self.setLayout(layout)
@@ -138,6 +185,28 @@ class Ventana(QWidget):
 
         self.resultados.setText(texto)
 
+    def mostrar_grupos(self):
+
+        datos_lista = [
+            self.datos.columns.tolist()
+        ] + self.datos.values.tolist()
+
+        grupos = agrupar_por_tipo(
+            datos_lista
+        )
+
+        texto = ""
+
+        for tipo, cantidad in grupos.items():
+
+            texto += (
+                f"{tipo}: {cantidad}\n"
+            )
+
+        self.resultados.setText(
+            texto
+        )
+
     def ver_historial(self):
 
         historial = mostrar_historial()
@@ -149,6 +218,71 @@ class Ventana(QWidget):
 
         self.resultados.setText(texto)
 
+    def grafico_tipo(self):
+
+        conteo = self.datos[
+            "TIPO_VEHICULO"
+        ].value_counts()
+
+        plt.figure(figsize=(8,5))
+
+        conteo.plot(kind="bar")
+
+        plt.title(
+            "Accidentes por Tipo de Vehículo"
+        )
+
+        plt.xlabel(
+            "Tipo de Vehículo"
+        )
+
+        plt.ylabel(
+            "Cantidad de Accidentes"
+        )
+
+        plt.tight_layout()
+
+        plt.show()
+
+    def grafico_edad(self):
+
+        plt.figure(figsize=(8,5))
+
+        self.datos[
+            "EDAD_VEHICULO"
+        ].hist(
+            bins=20
+        )
+
+        plt.title(
+            "Distribución de Edad de los Vehículos"
+        )
+
+        plt.xlabel(
+            "Edad del Vehículo"
+        )
+
+        plt.ylabel(
+            "Frecuencia"
+        )
+
+        plt.tight_layout()
+
+        plt.show()
+
+    def exportar_csv(self):
+
+        datos = self.datos.values.tolist() #Expota todos los registros
+
+        guardar_resultado(
+            datos,
+            "exportacion_datalab",
+            "csv"
+        )
+
+        self.resultados.setText(
+            "Archivo exportacion_datalab.csv guardado correctamente."
+        )
 
 app = QApplication(sys.argv)
 
