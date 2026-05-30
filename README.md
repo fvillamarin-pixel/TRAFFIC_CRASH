@@ -35,7 +35,7 @@ Paso 3: Usa el menú interactivo para seleccionar las opciones disponibles <br>
 **Integrantes:**<br>
 - Fredy Alejandro Villamarin Garcia<br>
 - Juan Manuel Villabon Nuñez<br>
-- Laura Sofia Muneton Balcazar<br>
+- Laura Sofia Muñeton Balcazar<br>
 
 
 **Link del poster:**
@@ -52,8 +52,8 @@ https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=shari
 
 ## ENTREGA 2
 
-**Funcionalidades Entrega 2** 
-<br>
+**Funcionalidades Entrega 2:** <br>
+
 - Búsqueda de registros.
 - Estadísticas básicas.
 - Agrupación por tipo de vehículo.
@@ -62,10 +62,73 @@ https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=shari
 - Historial automático de consultas.
 - Comparación de grupos.
 
- **Link del diagrama de flujo de datos**
+ **Link del diagrama de flujo de datos:**
  <br>
  https://drive.google.com/file/d/1R1Dmptn2mx06i8fguutc84CWCkfwKH5u/view?usp=drive_link
  
- **Link del video** 
+ **Link del video:** 
+ <br>
+ https://drive.google.com/file/d/1o6FUwplxAXTsrM3mUYsqhX546BYp0jGg/view?usp=drive_link
+
+ ## ENTREGA FINAL
+
+**Funcionalidades Entrega final:**
+
+- Búsqueda de registros por palabra clave.
+- Estadísticas básicas de variables numéricas.
+- Visualización del historial de consultas realizadas.
+- Agrupación de accidentes por tipo de vehículo.
+- Exportación de resultados a archivos CSV.
+- Interfaz gráfica desarrollada con PyQt5.
+- Carga de datos mediante Pandas.
+
+**Gráficos implementados:**<br>
+
+- Gráfico 1: Accidentes por tipo de vehículo:
+    Muestra la cantidad de accidentes registrados para cada tipo de vehículo mediante un gráfico de barras.
+- Gráfico 2: Distribución de la edad de los vehículos:
+    Muestra la distribución de la edad de los vehículos involucrados en accidentes mediante un histograma.
+
+**Librerías utilizadas:**<br>
+
+- Pandas
+- Matplotlib
+- PyQt5
+- CSV
+- JSON
+
+**Estructura del proyecto:**<br>
+```
+TRAFFIC_CRASH/
+│
+├── main.py
+├── interfaz.py
+├── analisis.py
+├── archivos.py
+├── README.md
+├── TRAFFIC_CRASH (1).csv
+└── TRAFFIC_CRASHpequeño.csv
+```
+
+**Ejecución del programa:**
+
+**- Instalar dependencias**
+
+```bash
+pip install pandas matplotlib pyqt5
+```
+
+**- Ejecutar la aplicación**
+
+```bash
+python main.py
+```
+
+
+ **Link del diagrama de flujo de datos:**
+ <br>
+ https://drive.google.com/file/d/1R1Dmptn2mx06i8fguutc84CWCkfwKH5u/view?usp=drive_link
+ 
+ **Link del video:** 
  <br>
  https://drive.google.com/file/d/1o6FUwplxAXTsrM3mUYsqhX546BYp0jGg/view?usp=drive_link
