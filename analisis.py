@@ -9,7 +9,7 @@ def cargar_datos(nombre_archivo):
     return datos
 def registrar_historial(consulta, cantidad_resultados):
     fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("historial.csv", "a", newline="", encoding="utf-8") as archivo:
+    with open("csvs/historial.csv", "a", newline="", encoding="utf-8") as archivo:
         escritor = csv.writer(archivo)
         escritor.writerow([fecha, consulta, cantidad_resultados])
 def buscar(datos, termino):

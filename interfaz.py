@@ -48,7 +48,7 @@ class Ventana(QWidget):
         """)
         # CARGA CON PANDAS
         self.datos = pd.read_csv(
-            "TRAFFIC_CRASH (1).csv",
+            "csvs/TRAFFIC_CRASH (1).csv",
             sep=";"
         )
         layout = QVBoxLayout()

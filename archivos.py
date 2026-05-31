@@ -22,7 +22,7 @@ def cargar_json(nombre_archivo):
         return json.load(archivo)
 def mostrar_historial():
     try:
-        with open("historial.csv", "r", encoding="utf-8") as archivo:
+        with open("csvs/historial.csv", "r", encoding="utf-8") as archivo:
             lector = csv.reader(archivo)
             historial = []
             for fila in lector:
