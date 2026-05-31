@@ -12,7 +12,11 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtCore import Qt
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 from analisis import agrupar_por_tipo
+
+plt.style.use("bmh")
 
 from archivos import (
     mostrar_historial,
@@ -25,11 +29,11 @@ class Ventana(QWidget):
         super().__init__()
 
         self.setWindowTitle("TRAFFIC CRASH - DataLab Hub")
-        self.resize(900, 700)
+        self.resize(1300, 900)
         self.setStyleSheet("""
             QPushButton {
-                font-size: 16px;
-                min-height: 50px;
+                font-size: 14px;
+                min-height: 35px;
             }
 
             QLineEdit {
@@ -131,13 +135,26 @@ class Ventana(QWidget):
 
         layout.addWidget(boton_salir)
 
+        self.figura = Figure(figsize=(6,4))
+        self.canvas = FigureCanvas(self.figura)
+
+        self.canvas.hide()
+
+        layout.addWidget(self.canvas)
+
         self.resultados = QTextEdit()
+
+        self.resultados.setMinimumHeight(150)
 
         layout.addWidget(self.resultados)
 
         self.setLayout(layout)
 
     def buscar_datos(self):
+
+        self.canvas.hide()
+
+        self.resultados.show()
 
         termino = self.caja_busqueda.text()
 
@@ -161,6 +178,10 @@ class Ventana(QWidget):
         self.resultados.setText(texto)
 
     def mostrar_estadisticas(self):
+
+        self.canvas.hide()
+
+        self.resultados.show()
 
         columnas_numericas = self.datos.select_dtypes(
             include="number"
@@ -187,6 +208,10 @@ class Ventana(QWidget):
 
     def mostrar_grupos(self):
 
+        self.canvas.hide()
+
+        self.resultados.show()
+
         datos_lista = [
             self.datos.columns.tolist()
         ] + self.datos.values.tolist()
@@ -209,6 +234,10 @@ class Ventana(QWidget):
 
     def ver_historial(self):
 
+        self.canvas.hide()
+
+        self.resultados.show()
+
         historial = mostrar_historial()
 
         texto = ""
@@ -220,55 +249,66 @@ class Ventana(QWidget):
 
     def grafico_tipo(self):
 
+        self.canvas.show()
+
+        self.resultados.hide()
+
+        self.figura.clear()
+
+        ax = self.figura.add_subplot(111)
+
         conteo = self.datos[
             "TIPO_VEHICULO"
         ].value_counts()
 
-        plt.figure(figsize=(8,5))
+        conteo.plot(
+            kind="barh",
+            ax=ax
+        )
 
-        conteo.plot(kind="bar")
-
-        plt.title(
+        ax.set_title(
             "Accidentes por Tipo de Vehículo"
         )
 
-        plt.xlabel(
+        ax.set_xlabel(
             "Tipo de Vehículo"
         )
 
-        plt.ylabel(
+        ax.set_ylabel(
             "Cantidad de Accidentes"
         )
 
-        plt.tight_layout()
-
-        plt.show()
-
+        self.canvas.draw()
     def grafico_edad(self):
 
-        plt.figure(figsize=(8,5))
+        self.canvas.show()
 
-        self.datos[
-            "EDAD_VEHICULO"
-        ].hist(
+        self.resultados.hide()
+
+        self.figura.clear()
+
+        ax = self.figura.add_subplot(111)
+
+        edades = self.datos["EDAD_VEHICULO"]
+
+        ax.hist(
+            edades,
             bins=20
         )
 
-        plt.title(
+        ax.set_title(
             "Distribución de Edad de los Vehículos"
         )
 
-        plt.xlabel(
+        ax.set_xlabel(
             "Edad del Vehículo"
         )
 
-        plt.ylabel(
+        ax.set_ylabel(
             "Frecuencia"
         )
 
-        plt.tight_layout()
-
-        plt.show()
+        self.canvas.draw()
 
     def exportar_csv(self):
 
