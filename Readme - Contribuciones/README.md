@@ -74,13 +74,12 @@ https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=shari
 
 **Funcionalidades Entrega final:**
 
-- Búsqueda de registros por palabra clave.
-- Estadísticas básicas de variables numéricas.
-- Visualización del historial de consultas realizadas.
-- Agrupación de accidentes por tipo de vehículo.
-- Exportación de resultados a archivos CSV.
-- Interfaz gráfica desarrollada con PyQt5.
-- Carga de datos mediante Pandas.
+- Búsqueda de registros dentro del dataset.
+- Cálculo de estadísticas descriptivas.
+- Agrupación de vehículos por tipo.
+- Visualización de gráficos mediante Matplotlib.
+- Exportación de resultados a CSV.
+- Historial de consultas realizadas.
 
 **Gráficos implementados:**<br>
 
@@ -98,29 +97,56 @@ https://drive.google.com/file/d/1QvMmm6EbU6nRBlkmOACK8TqSUTllekvv/view?usp=shari
 - JSON
 
 **Estructura del proyecto:**<br>
-```
+```text
 TRAFFIC_CRASH/
 │
-├── main.py
-├── interfaz.py
 ├── analisis.py
 ├── archivos.py
-├── README.md
-├── TRAFFIC_CRASH (1).csv
-└── TRAFFIC_CRASHpequeño.csv
+├── interfaz.py
+├── main.py
+│
+├── csvs/
+│   ├── TRAFFIC_CRASH (1).csv
+│   ├── TRAFFIC_CRASHpequeño.csv
+│   ├── historial.csv
+│   ├── exportacion_datalab.csv
+│   └── resultados_busqueda.csv
+│
+├── documentacion/
+│   ├── Documentacion TRAFFIC_CRASH.pdf
+│   └── conclusion_visual.png
+│
+└── Readme - Contribuciones/
+    ├── README.md
+    └── Contribuciones.md
 ```
 
 **Ejecución del programa:**
 
-**- Instalar dependencias**
+    **- Clonar el repositorio**
 
-```bash
-pip install pandas matplotlib pyqt5
-```
+    **- Instalar dependencias**
 
-**- Ejecutar la aplicación**
+    ```bash
+    pip install pandas matplotlib pyqt5
+    ```
 
-```bash
-python main.py
-```
+    **- Ejecutar la aplicación**
 
+    ```bash
+    python main.py
+    ```
+
+    **- Utilizar la interfaz gráfica**
+
+
+**Documentación:**
+
+La documentación del proyecto se encuentra en:
+    documentacion/Documentacion TRAFFIC_CRASH.pdf
+    documentacion/TRAFFIC_CRASH-DataLab Hub.pdf
+
+**Conclusión visual:**
+
+La infografía final del proyecto se encuentra en:
+    documentacion/Conclusion Visual TRAFFIC_CRASH.png
