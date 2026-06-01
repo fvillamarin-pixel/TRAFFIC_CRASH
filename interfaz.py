@@ -6,11 +6,16 @@ from PyQt5.QtWidgets import (
     QWidget,
     QVBoxLayout,
     QPushButton,
-    QTextEdit,
     QLineEdit,
-    QLabel
+    QLabel,
+    QTableView,
+    QTextEdit
 )
-from PyQt5.QtCore import Qt
+
+from PyQt5.QtCore import (
+    Qt,
+    QAbstractTableModel
+)
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
@@ -22,6 +27,51 @@ from archivos import (
     mostrar_historial,
     guardar_resultado
 )
+class PandasModel(QAbstractTableModel):
+
+    def __init__(self, dataframe):
+        super().__init__()
+        self._data = dataframe
+
+    def rowCount(self, parent=None):
+        return self._data.shape[0]
+
+    def columnCount(self, parent=None):
+        return self._data.shape[1]
+
+    def data(self, index, role=Qt.DisplayRole):
+
+        if role == Qt.DisplayRole:
+
+            return str(
+                self._data.iloc[
+                    index.row(),
+                    index.column()
+                ]
+            )
+
+        return None
+
+    def headerData(
+        self,
+        section,
+        orientation,
+        role
+    ):
+
+        if role == Qt.DisplayRole:
+
+            if orientation == Qt.Horizontal:
+
+                return str(
+                    self._data.columns[
+                        section
+                    ]
+                )
+
+            return str(section)
+
+        return None
 
 class Ventana(QWidget):
 
@@ -140,21 +190,37 @@ class Ventana(QWidget):
 
         self.canvas.hide()
 
-        layout.addWidget(self.canvas)
+        self.tabla = QTableView()
+
+        self.tabla.setMinimumHeight(300)
+
+        layout.addWidget(self.tabla)
 
         self.resultados = QTextEdit()
 
-        self.resultados.setMinimumHeight(150)
+        self.resultados.hide()
 
         layout.addWidget(self.resultados)
 
         self.setLayout(layout)
 
+    def mostrar_dataframe(self, df):
+
+        modelo = PandasModel(df)
+
+        self.tabla.setModel(modelo)
+
+        self.tabla.resizeColumnsToContents()
+
+        self.tabla.setSortingEnabled(True)
+
+        self.tabla.show()
+
+        self.resultados.hide()
+
     def buscar_datos(self):
 
         self.canvas.hide()
-
-        self.resultados.show()
 
         termino = self.caja_busqueda.text()
 
@@ -168,26 +234,22 @@ class Ventana(QWidget):
 
         resultados = self.datos[mascara]
 
-        texto = (
-            f"Se encontraron "
-            f"{len(resultados)} registros\n\n"
+        self.mostrar_dataframe(
+            resultados.head(500)
         )
-
-        texto += resultados.head(50).to_string()
-
-        self.resultados.setText(texto)
 
     def mostrar_estadisticas(self):
 
         self.canvas.hide()
-
-        self.resultados.show()
 
         columnas_numericas = self.datos.select_dtypes(
             include="number"
         ).columns
 
         if len(columnas_numericas) == 0:
+            self.resultados.show()
+
+            self.tabla.hide()
 
             self.resultados.setText(
                 "No hay columnas numéricas."
@@ -197,47 +259,53 @@ class Ventana(QWidget):
 
         columna = columnas_numericas[0]
 
-        texto = (
-            f"Columna: {columna}\n\n"
-            f"Máximo: {self.datos[columna].max()}\n"
-            f"Mínimo: {self.datos[columna].min()}\n"
-            f"Promedio: {round(self.datos[columna].mean(),2)}"
-        )
+        estadisticas = pd.DataFrame({
 
-        self.resultados.setText(texto)
+            "Medida": [
+                "Máximo",
+                "Mínimo",
+                "Promedio"
+            ],
+
+            "Valor": [
+                self.datos[columna].max(),
+                self.datos[columna].min(),
+                round(
+                    self.datos[columna].mean(),
+                    2
+                )
+            ]
+        })
+
+        self.mostrar_dataframe(
+            estadisticas
+        )
 
     def mostrar_grupos(self):
 
         self.canvas.hide()
 
-        self.resultados.show()
-
-        datos_lista = [
-            self.datos.columns.tolist()
-        ] + self.datos.values.tolist()
-
-        grupos = agrupar_por_tipo(
-            datos_lista
+        grupos = (
+            self.datos[
+                "TIPO_VEHICULO"
+            ]
+            .value_counts()
+            .reset_index()
         )
 
-        texto = ""
+        grupos.columns = [
+            "Tipo de Vehículo",
+            "Cantidad"
+        ]
 
-        for tipo, cantidad in grupos.items():
-
-            texto += (
-                f"{tipo}: {cantidad}\n"
-            )
-
-        self.resultados.setText(
-            texto
+        self.mostrar_dataframe(
+            grupos
         )
 
     def ver_historial(self):
-
         self.canvas.hide()
-
+        self.tabla.hide()
         self.resultados.show()
-
         historial = mostrar_historial()
 
         texto = ""
@@ -250,9 +318,7 @@ class Ventana(QWidget):
     def grafico_tipo(self):
 
         self.canvas.show()
-
         self.resultados.hide()
-
         self.figura.clear()
 
         ax = self.figura.add_subplot(111)
@@ -282,7 +348,6 @@ class Ventana(QWidget):
     def grafico_edad(self):
 
         self.canvas.show()
-
         self.resultados.hide()
 
         self.figura.clear()
@@ -319,7 +384,8 @@ class Ventana(QWidget):
             "exportacion_datalab",
             "csv"
         )
-
+        self.tabla.hide()
+        self.resultados.show()
         self.resultados.setText(
             "Archivo exportacion_datalab.csv guardado correctamente."
         )
